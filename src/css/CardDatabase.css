@@ -1,0 +1,90 @@
+.card-database-page {
+    min-height: 100vh;
+    background: #f6f7f9;
+    color: #191c22;
+  }
+  
+  .container {
+    width: min(1000px, calc(100% - 48px));
+    margin: 0 auto;
+  }
+  
+  .main-content {
+    padding: 56px 0 120px;
+  }
+  
+  .main-content h1 {
+    margin: 0 0 28px;
+    font-size: clamp(2.2rem, 5vw, 4.8rem);
+    font-weight: 400;
+  }
+  
+  .toolbar {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 12px;
+    background: #faf5f7;
+    border-radius: 12px;
+    padding: 12px;
+  }
+  
+  .control {
+    min-height: 56px;
+    border: 2px solid #dbe0e8;
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+  }
+  
+  .search-control svg {
+    width: 24px;
+    height: 24px;
+    fill: #98a3b4;
+    flex: 0 0 auto;
+  }
+  
+  .search-control input {
+    border: 0;
+    outline: 0;
+    margin-left: 10px;
+    width: 100%;
+    font: inherit;
+    font-size: 18px;
+    color: #374456;
+    background: transparent;
+  }
+  
+  .search-control input::placeholder {
+    color: #9aa4b5;
+  }
+  
+  .filter-control select {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    background: transparent;
+    width: 100%;
+    padding: 10px 6px;
+    color: #374456;
+  }
+  
+  .count {
+    margin: 28px 0 18px;
+    font-size: 20px;
+    color: #6a7788;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
