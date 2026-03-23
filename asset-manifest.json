@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/database-frontend-spring2026/static/css/main.ef9ba0c4.css",
-    "main.js": "/database-frontend-spring2026/static/js/main.6c5497af.js",
+    "main.css": "/database-frontend-spring2026/static/css/main.14a09548.css",
+    "main.js": "/database-frontend-spring2026/static/js/main.8e9cd4ae.js",
     "index.html": "/database-frontend-spring2026/index.html",
-    "main.ef9ba0c4.css.map": "/database-frontend-spring2026/static/css/main.ef9ba0c4.css.map",
-    "main.6c5497af.js.map": "/database-frontend-spring2026/static/js/main.6c5497af.js.map"
+    "main.14a09548.css.map": "/database-frontend-spring2026/static/css/main.14a09548.css.map",
+    "main.8e9cd4ae.js.map": "/database-frontend-spring2026/static/js/main.8e9cd4ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef9ba0c4.css",
-    "static/js/main.6c5497af.js"
+    "static/css/main.14a09548.css",
+    "static/js/main.8e9cd4ae.js"
   ]
 }
