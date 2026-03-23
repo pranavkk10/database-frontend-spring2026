@@ -3,6 +3,7 @@ import Slideshow from "../components/Slideshow";
 import "../css/Homepage.css";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import vaultImg from "../images/Vault.png";
 
 
 export default function Homepage() {
@@ -30,7 +31,7 @@ export default function Homepage() {
       <main>
         <section className="hero" aria-label="Sports card safe">
           <img
-            src="/images/Vault.png"
+            src={vaultImg}
             alt="Sports cards organized inside a secure vault"
           />
         </section>

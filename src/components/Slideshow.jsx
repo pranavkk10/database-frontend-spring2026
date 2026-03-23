@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import "../css/Slideshow.css";
+import michaelImg from "../images/Michael.jpeg";
+import wayneImg from "../images/Wayne.jpeg";
+import tomImg from "../images/Tom.jpeg";
+import kobeImg from "../images/Kobe.jpeg";
+import messiImg from "../images/Messi.jpeg";
+import derekImg from "../images/derek.jpeg";
+
+
 
 const slides = [
-  { src: "/images/Michael.jpeg", caption: "Michael Jordan — 1987 Fleer" },
-  { src: "/images/Wayne.jpeg", caption: "Wayne Gretzky — 1979 OPC" },
-  { src: "/images/Tom.jpeg", caption: "Tom Brady — 2000 Playoff Contenders" },
-  { src: "/images/Kobe.jpeg", caption: "Kobe Bryant — 1996 Oberto" },
-  { src: "/images/Messi.jpeg", caption: "Lionel Messi — 2011 Tops" },
-  { src: "/images/derek.jpeg", caption: "Derek Jeter — 1993 SP Foil" },
+  { src: michaelImg, caption: "Michael Jordan — 1987 Fleer" },
+  { src: wayneImg, caption: "Wayne Gretzky — 1979 OPC" },
+  { src: tomImg, caption: "Tom Brady — 2000 Playoff Contenders" },
+  { src: kobeImg, caption: "Kobe Bryant — 1996 Oberto" },
+  { src: messiImg, caption: "Lionel Messi — 2011 Tops" },
+  { src: derekImg, caption: "Derek Jeter — 1993 SP Foil" },
 ];
 
 export default function Slideshow() {

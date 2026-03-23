@@ -2,11 +2,19 @@ import Card from "../components/Card";
 import Footer from "../components/Footer";
 import "../css/CardDatabase.css";
 import { Link } from "react-router-dom";
+import michaelImg from "../images/Michael.jpeg";
+import wayneImg from "../images/Wayne.jpeg";
+import tomImg from "../images/Tom.jpeg";
+import kobeImg from "../images/Kobe.jpeg";
+import messiImg from "../images/Messi.jpeg";
+import derekImg from "../images/derek.jpeg";
+import lebronImg from "../images/Lebron.jpeg";
+import judgeImg from "../images/Judge.jpeg";
 
 const cards = [
   {
     name: "Michael Jordan",
-    img: "/images/Michael.jpeg",
+    img: michaelImg,
     brand: "Fleer",
     year: 1986,
     cardNumber: "#57",
@@ -17,7 +25,7 @@ const cards = [
   },
   {
     name: "Wayne Gretzky",
-    img: "/images/Wayne.jpeg",
+    img: wayneImg,
     brand: "O-Pee-Chee",
     year: 1979,
     cardNumber: "#18",
@@ -28,7 +36,7 @@ const cards = [
   },
   {
     name: "Tom Brady",
-    img: "/images/Tom.jpeg",
+    img: tomImg,
     brand: "Playoff Contenders",
     year: 2000,
     cardNumber: "#144",
@@ -39,7 +47,7 @@ const cards = [
   },
   {
     name: "Kobe Bryant",
-    img: "/images/Kobe.jpeg",
+    img: kobeImg,
     brand: "Topps Chrome",
     year: 1996,
     cardNumber: "#138",
@@ -50,7 +58,7 @@ const cards = [
   },
   {
     name: "Lionel Messi",
-    img: "/images/Messi.jpeg",
+    img: messiImg,
     brand: "Topps",
     year: 2011,
     cardNumber: "#2011",
@@ -61,7 +69,7 @@ const cards = [
   },
   {
     name: "Derek Jeter",
-    img: "/images/derek.jpeg",
+    img: derekImg,
     brand: "SP",
     year: 1993,
     cardNumber: "#279",
@@ -72,7 +80,7 @@ const cards = [
   },
   {
     name: "LeBron James",
-    img: "/images/Lebron.jpeg",
+    img: lebronImg,
     brand: "Upper Deck",
     year: 2003,
     cardNumber: "#23",
@@ -83,7 +91,7 @@ const cards = [
   },
   {
     name: "Aaron Judge",
-    img: "/images/Judge.jpeg",
+    img: judgeImg,
     brand: "Topps",
     year: 2013,
     cardNumber: "#AAR13",

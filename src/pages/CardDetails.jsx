@@ -3,10 +3,14 @@ import MiniCard from "../components/MiniCard";
 import Footer from "../components/Footer";
 import "../css/CardDetails.css";
 import { Link } from "react-router-dom";
+import michaelImg from "../images/Michael.jpeg";
+import lebronImg from "../images/Lebron.jpeg";
+import kobeImg from "../images/Kobe.jpeg";
+
 
 const mainCard = {
   name: "Michael Jordan",
-  img: "/images/Michael.jpeg",
+  img: michaelImg,
   brand: "Fleer",
   year: 1986,
   cardNumber: "#57",
@@ -18,14 +22,14 @@ const mainCard = {
 const moreCards = [
   {
     name: "LeBron James",
-    img: "/images/Lebron.jpeg",
+    img: lebronImg,
     brand: "Topps",
     year: 2003,
     price: 35000
   },
   {
     name: "Kobe Bryant",
-    img: "/images/Kobe.jpeg",
+    img: kobeImg,
     brand: "Topps Chrome",
     year: 1996,
     price: 95000
