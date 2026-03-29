@@ -1,6 +1,7 @@
 import FeatureCard from "../components/FeatureCard";
 import Slideshow from "../components/Slideshow";
 import "../css/Homepage.css";
+import VideoBanner from "../components/VideoBanner";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import vaultImg from "../images/Vault.png";
@@ -59,6 +60,8 @@ export default function Homepage() {
             </Link>
           </div>
         </section>
+
+        <VideoBanner />
 
         
         <section className="slideshow-section" aria-label="Card slideshow">

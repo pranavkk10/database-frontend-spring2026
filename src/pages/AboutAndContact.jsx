@@ -53,7 +53,7 @@ export default function AboutContact() {
       const result = await response.json();
 
       if (result?.success === true || result?.message === "Email sent") {
-        setStatus("Thanks — your message was sent successfully. We'll be in touch soon.", "success");
+        setStatus("Thank you! Your message was sent successfully. We'll be in touch soon.", "success");
       } else {
         setStatus("Message sent (server returned success).", "success");
       }
