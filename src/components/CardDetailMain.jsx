@@ -13,7 +13,6 @@ function CardDetailMain({ card }) {
             <p className="meta">{card.brand}</p>
           </div>
 
-          <button className="edit-btn">Search for more cards</button>
         </div>
 
         <div className="value-box">
