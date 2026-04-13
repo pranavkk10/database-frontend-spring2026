@@ -1,24 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import "../css/CardDatabase.css";
 import { Link } from "react-router-dom";
 
-function CardDatabase() {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://demo-backend-nm5x.onrender.com/cards")
-      .then((res) => {
-        setCards(res.data);
-      })
-      .catch((err) => {
-        console.error("Error fetching cards:", err);
-      });
-  }, []);
-
+function CardDatabase({ cards }) {
   return (
     <div id="content" className="card-database-page">
       <main className="container main-content">
