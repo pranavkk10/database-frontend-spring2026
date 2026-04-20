@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/database-frontend-spring2026/static/css/main.9db763a5.css",
-    "main.js": "/database-frontend-spring2026/static/js/main.996825a7.js",
+    "main.css": "/database-frontend-spring2026/static/css/main.6b0382bc.css",
+    "main.js": "/database-frontend-spring2026/static/js/main.9bc312e7.js",
     "static/media/Vault.png": "/database-frontend-spring2026/static/media/Vault.0567155b5302e36cf929.png",
     "static/media/Tom.jpeg": "/database-frontend-spring2026/static/media/Tom.c56e276a1c2a8db53859.jpeg",
     "static/media/Kobe.jpeg": "/database-frontend-spring2026/static/media/Kobe.f04f56c6f8dd9d73b713.jpeg",
     "static/media/Messi.jpeg": "/database-frontend-spring2026/static/media/Messi.064bcb9443d3850be96c.jpeg",
     "static/media/Michael.jpeg": "/database-frontend-spring2026/static/media/Michael.2f817d78e33515b4fea5.jpeg",
     "index.html": "/database-frontend-spring2026/index.html",
-    "main.9db763a5.css.map": "/database-frontend-spring2026/static/css/main.9db763a5.css.map",
-    "main.996825a7.js.map": "/database-frontend-spring2026/static/js/main.996825a7.js.map"
+    "main.6b0382bc.css.map": "/database-frontend-spring2026/static/css/main.6b0382bc.css.map",
+    "main.9bc312e7.js.map": "/database-frontend-spring2026/static/js/main.9bc312e7.js.map"
   },
   "entrypoints": [
-    "static/css/main.9db763a5.css",
-    "static/js/main.996825a7.js"
+    "static/css/main.6b0382bc.css",
+    "static/js/main.9bc312e7.js"
   ]
 }
