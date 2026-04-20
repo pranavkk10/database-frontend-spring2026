@@ -10,6 +10,8 @@ import CardDetails from "./pages/CardDetails";
 import AddEditCards from "./pages/AddEditCards";
 import About from './pages/AboutAndContact';
 
+const API_BASE = "https://demo-backend-nm5x.onrender.com";
+
 const CardDetailsGate = () => {
   const lastId = localStorage.getItem("lastCardId") || "1";
   return <Navigate to={`/card/${lastId}`} replace />;
@@ -19,7 +21,7 @@ const App = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    axios.get("https://demo-backend-nm5x.onrender.com/cards")
+    axios.get(`${API_BASE}/cards`)
       .then((res) => setCards(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -30,14 +32,29 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about-contact" element={<About />} />
-          <Route path="card-database" element={<CardDatabase cards={cards} />} />
+
+          <Route
+            path="card-database"
+            element={<CardDatabase cards={cards} setCards={setCards} />}
+          />
+
           <Route
             path="card-details"
             element={<CardDetailsGate />}
           />
-          <Route path="card/:id" element={<CardDetails />} />
+
+          <Route
+            path="card/:id"
+            element={<CardDetails cards={cards} setCards={setCards} />}
+          />
+
           <Route
             path="add-edit-cards"
+            element={<AddEditCards cards={cards} setCards={setCards} />}
+          />
+
+          <Route
+            path="add-edit-cards/:id"
             element={<AddEditCards cards={cards} setCards={setCards} />}
           />
         </Route>

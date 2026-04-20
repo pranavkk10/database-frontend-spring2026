@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../components/Footer";
 import "../css/AddEditCards.css";
 
-export default function AddEditCards({ setCards }) {
+const API_BASE = "https://demo-backend-nm5x.onrender.com";
+
+export default function AddEditCards({ cards, setCards }) {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const isEditing = !!id;
+
   const [formData, setFormData] = useState({
     name: "",
     year: "",
@@ -18,6 +25,42 @@ export default function AddEditCards({ setCards }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    if (!isEditing) return;
+
+    const existingCard = cards?.find((card) => String(card._id) === String(id));
+
+    if (existingCard) {
+      setFormData({
+        name: existingCard.name || "",
+        year: existingCard.year || "",
+        sport: existingCard.sport || "",
+        brand: existingCard.brand || "",
+        card_number: existingCard.card_number || "",
+        grade: existingCard.grade || "",
+        price: existingCard.price || "",
+        description: existingCard.description || "",
+      });
+    } else {
+      axios
+        .get(`${API_BASE}/cards/${id}`)
+        .then((res) => {
+          const card = res.data;
+          setFormData({
+            name: card.name || "",
+            year: card.year || "",
+            sport: card.sport || "",
+            brand: card.brand || "",
+            card_number: card.card_number || "",
+            grade: card.grade || "",
+            price: card.price || "",
+            description: card.description || "",
+          });
+        })
+        .catch((err) => console.error("Error loading card:", err));
+    }
+  }, [id, isEditing, cards]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -67,7 +110,7 @@ export default function AddEditCards({ setCards }) {
       newErrors.description = "Description must be at least 10 characters.";
     }
 
-    if (!selectedFile) {
+    if (!isEditing && !selectedFile) {
       newErrors.image = "Please choose an image file.";
     }
 
@@ -94,50 +137,78 @@ export default function AddEditCards({ setCards }) {
     submitData.append("grade", formData.grade);
     submitData.append("price", formData.price);
     submitData.append("description", formData.description);
-    submitData.append("image", selectedFile);
+
+    if (selectedFile) {
+      submitData.append("image", selectedFile);
+    }
 
     try {
-      const response = await axios.post(
-        "https://demo-backend-nm5x.onrender.com/cards",
-        submitData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      let response;
 
-      if (response.data.success) {
-        if (setCards) {
+      if (isEditing) {
+        response = await axios.put(
+          `${API_BASE}/cards/${id}`,
+          submitData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.data.success) {
+          setCards((prevCards) =>
+            prevCards.map((card) =>
+              card._id === response.data.card._id ? response.data.card : card
+            )
+          );
+
+          setSuccessMessage("Card updated successfully!");
+
+          setTimeout(() => {
+            navigate("/card-database");
+          }, 1000);
+        }
+      } else {
+        response = await axios.post(
+          `${API_BASE}/cards`,
+          submitData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        if (response.data.success) {
           setCards((prevCards) => [...prevCards, response.data.card]);
+          setSuccessMessage("Card added successfully!");
+
+          setFormData({
+            name: "",
+            year: "",
+            sport: "",
+            brand: "",
+            card_number: "",
+            grade: "",
+            price: "",
+            description: "",
+          });
+
+          setSelectedFile(null);
+          setErrors({});
+          e.target.reset();
         }
-
-        setSuccessMessage("Card added successfully!");
-        setErrors({});
-
-        setFormData({
-          name: "",
-          year: "",
-          sport: "",
-          brand: "",
-          card_number: "",
-          grade: "",
-          price: "",
-          description: "",
-        });
-
-        setSelectedFile(null);
-        e.target.reset();
       }
     } catch (error) {
-      console.error("Error adding card:", error);
+      console.error("Error saving card:", error);
 
       if (error.response?.data?.errors) {
         setErrors({ server: error.response.data.errors.join(" ") });
       } else if (error.response?.data?.message) {
         setErrors({ server: error.response.data.message });
       } else {
-        setErrors({ server: "Something went wrong while adding the card." });
+        setErrors({ server: "Something went wrong while saving the card." });
       }
     }
   }
@@ -145,10 +216,12 @@ export default function AddEditCards({ setCards }) {
   return (
     <div className="add-edit-cards-page">
       <main className="content">
+        <h2>{isEditing ? "Edit Card" : "+ Add New Card"}</h2>
+
         {successMessage && <p className="success-message">{successMessage}</p>}
         {errors.server && <p className="error-message">{errors.server}</p>}
 
-        <section className="form-card" aria-label="Add new card form">
+        <section className="form-card" aria-label="card form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Player Name *</label>
             <input
@@ -238,7 +311,7 @@ export default function AddEditCards({ setCards }) {
               </div>
             </div>
 
-            <label htmlFor="image">Image File *</label>
+            <label htmlFor="image">{isEditing ? "Replace Image" : "Image File *"}</label>
             <input
               id="image"
               name="image"
@@ -260,29 +333,15 @@ export default function AddEditCards({ setCards }) {
 
             <div className="actions">
               <button className="btn btn-primary" type="submit">
-                Add Card
+                {isEditing ? "Save Changes" : "Add Card"}
               </button>
 
               <button
                 className="btn btn-secondary"
                 type="button"
-                onClick={() => {
-                  setFormData({
-                    name: "",
-                    year: "",
-                    sport: "",
-                    brand: "",
-                    card_number: "",
-                    grade: "",
-                    price: "",
-                    description: "",
-                  });
-                  setSelectedFile(null);
-                  setErrors({});
-                  setSuccessMessage("");
-                }}
+                onClick={() => navigate("/card-database")}
               >
-                Clear
+                Cancel
               </button>
             </div>
           </form>

@@ -88,3 +88,27 @@
     color: inherit;
     display: block;
   }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  
+  .btn-danger {
+    background: #b42318;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .btn-danger:hover {
+    opacity: 0.92;
+  }
