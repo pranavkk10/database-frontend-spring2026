@@ -15,7 +15,7 @@ function CardDatabase({ cards, setCards }) {
 
       if (response.data.success) {
         setCards((prevCards) =>
-          prevCards.filter((card) => card._id !== cardId)
+          prevCards.filter((card) => String(card._id) !== String(cardId))
         );
       }
     } catch (error) {
@@ -70,7 +70,7 @@ function CardDatabase({ cards, setCards }) {
                 state={{ card }}
                 className="card-link"
                 onClick={() => localStorage.setItem("lastCardId", card._id)}
-              >
+>
                 <Card
                   name={card.name}
                   img={`${API_BASE}/${card.img_name}`}

@@ -159,7 +159,7 @@ export default function AddEditCards({ cards, setCards }) {
         if (response.data.success) {
           setCards((prevCards) =>
             prevCards.map((card) =>
-              card._id === response.data.card._id ? response.data.card : card
+              String(card._id) === String(response.data.card._id) ? response.data.card : card
             )
           );
 
@@ -167,7 +167,7 @@ export default function AddEditCards({ cards, setCards }) {
 
           setTimeout(() => {
             navigate("/card-database");
-          }, 1000);
+          }, 800);
         }
       } else {
         response = await axios.post(
@@ -224,37 +224,19 @@ export default function AddEditCards({ cards, setCards }) {
         <section className="form-card" aria-label="card form">
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Player Name *</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleChange}
-            />
+            <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} />
             {errors.name && <p className="field-error">{errors.name}</p>}
 
             <div className="two-col">
               <div>
                 <label htmlFor="year">Year *</label>
-                <input
-                  id="year"
-                  name="year"
-                  type="number"
-                  value={formData.year}
-                  onChange={handleChange}
-                />
+                <input id="year" name="year" type="number" value={formData.year} onChange={handleChange} />
                 {errors.year && <p className="field-error">{errors.year}</p>}
               </div>
 
               <div>
                 <label htmlFor="sport">Sport *</label>
-                <input
-                  id="sport"
-                  name="sport"
-                  type="text"
-                  value={formData.sport}
-                  onChange={handleChange}
-                />
+                <input id="sport" name="sport" type="text" value={formData.sport} onChange={handleChange} />
                 {errors.sport && <p className="field-error">{errors.sport}</p>}
               </div>
             </div>
@@ -262,25 +244,13 @@ export default function AddEditCards({ cards, setCards }) {
             <div className="two-col">
               <div>
                 <label htmlFor="brand">Brand *</label>
-                <input
-                  id="brand"
-                  name="brand"
-                  type="text"
-                  value={formData.brand}
-                  onChange={handleChange}
-                />
+                <input id="brand" name="brand" type="text" value={formData.brand} onChange={handleChange} />
                 {errors.brand && <p className="field-error">{errors.brand}</p>}
               </div>
 
               <div>
                 <label htmlFor="card_number">Card Number *</label>
-                <input
-                  id="card_number"
-                  name="card_number"
-                  type="text"
-                  value={formData.card_number}
-                  onChange={handleChange}
-                />
+                <input id="card_number" name="card_number" type="text" value={formData.card_number} onChange={handleChange} />
                 {errors.card_number && <p className="field-error">{errors.card_number}</p>}
               </div>
             </div>
@@ -288,47 +258,23 @@ export default function AddEditCards({ cards, setCards }) {
             <div className="two-col">
               <div>
                 <label htmlFor="grade">Grade *</label>
-                <input
-                  id="grade"
-                  name="grade"
-                  type="text"
-                  value={formData.grade}
-                  onChange={handleChange}
-                />
+                <input id="grade" name="grade" type="text" value={formData.grade} onChange={handleChange} />
                 {errors.grade && <p className="field-error">{errors.grade}</p>}
               </div>
 
               <div>
                 <label htmlFor="price">Estimated Value *</label>
-                <input
-                  id="price"
-                  name="price"
-                  type="number"
-                  value={formData.price}
-                  onChange={handleChange}
-                />
+                <input id="price" name="price" type="number" value={formData.price} onChange={handleChange} />
                 {errors.price && <p className="field-error">{errors.price}</p>}
               </div>
             </div>
 
             <label htmlFor="image">{isEditing ? "Replace Image" : "Image File *"}</label>
-            <input
-              id="image"
-              name="image"
-              type="file"
-              accept="image/*"
-              onChange={handleFileChange}
-            />
+            <input id="image" name="image" type="file" accept="image/*" onChange={handleFileChange} />
             {errors.image && <p className="field-error">{errors.image}</p>}
 
             <label htmlFor="description">Description *</label>
-            <input
-              id="description"
-              name="description"
-              type="text"
-              value={formData.description}
-              onChange={handleChange}
-            />
+            <input id="description" name="description" type="text" value={formData.description} onChange={handleChange} />
             {errors.description && <p className="field-error">{errors.description}</p>}
 
             <div className="actions">

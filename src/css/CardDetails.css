@@ -177,3 +177,29 @@
       flex-direction: column;
     }
   }
+
+  .more-cards {
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cards-row {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .mini-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+  }
+  
+  .mini-card-link * {
+    pointer-events: none;
+  }

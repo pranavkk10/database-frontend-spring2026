@@ -13,7 +13,12 @@ import About from './pages/AboutAndContact';
 const API_BASE = "https://demo-backend-nm5x.onrender.com";
 
 const CardDetailsGate = () => {
-  const lastId = localStorage.getItem("lastCardId") || "1";
+  const lastId = localStorage.getItem("lastCardId");
+
+  if (!lastId) {
+    return <Navigate to="/card-database" replace />;
+  }
+
   return <Navigate to={`/card/${lastId}`} replace />;
 };
 
