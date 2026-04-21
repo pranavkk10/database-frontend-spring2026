@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import './index.css';
 import Layout from './Layout';
@@ -32,39 +32,28 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about-contact" element={<About />} />
-
           <Route
             path="card-database"
             element={<CardDatabase cards={cards} setCards={setCards} />}
           />
-
-          <Route
-            path="card-details"
-            element={<CardDetailsGate />}
-          />
-
-          <Route
-            path="card/:id"
-            element={<CardDetails cards={cards} setCards={setCards} />}
-          />
-
+          <Route path="card-details" element={<CardDetailsGate />} />
+          <Route path="card/:id" element={<CardDetails cards={cards} setCards={setCards} />} />
           <Route
             path="add-edit-cards"
             element={<AddEditCards cards={cards} setCards={setCards} />}
           />
-
           <Route
             path="add-edit-cards/:id"
             element={<AddEditCards cards={cards} setCards={setCards} />}
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
